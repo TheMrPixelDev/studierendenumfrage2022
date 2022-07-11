@@ -133,7 +133,7 @@ function renderDynamicCharts(filteredData, columnNames) {
             for(let i = 0; i<result.labels.length; i++) {
                 result.labels[i] = answerMapping1[""+result.labels[i]]
             }
-        }else if(i >= 8 && i <= 18) {
+        }else if(i >= 8 && i < 18) {
             for(let i = 0; i<result.labels.length; i++) {
                 result.labels[i] = answerMapping2[""+result.labels[i]]
             }
@@ -146,7 +146,7 @@ function renderDynamicCharts(filteredData, columnNames) {
         questionTitle.innerText = questions[columnNames[i]];
         card.classList = "card mt-3"
         cardBody.classList = "card-body"
-        chartStats.innerText = `Antworten: ${result.count.reduce((total, num) => {return total+num;})}`;
+        chartStats.innerText = `Antworten: ${result.count.reduce((total, num) => {return total+num;})} Nr: ${i}`;
         chartCanvas.style.width = "100%";
         chartCanvas.classList.add("mt-5")
         const chart = new Chart(chartCanvas.getContext("2d"), {
