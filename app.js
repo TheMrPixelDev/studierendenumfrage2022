@@ -184,4 +184,55 @@ function renderDynamicCharts(filteredData, columnNames) {
     
 }
 
+async function renderStaticChart(url, title) {
+    const app = document.getElementById("static");
+    const res = await fetch(url);
+    const json = await res.json();
+
+    const labels = Object.keys(json);
+    const values = Object.values(json);
+    
+    const chartCanvas = document.createElement("canvas");
+    const card = document.createElement("div")
+    const cardBody = document.createElement("div")
+    const questionTitle = document.createElement("h5")
+    questionTitle.innerText = title;
+    card.classList = "card mt-3"
+    cardBody.classList = "card-body"
+    chartCanvas.style.width = "100%";
+    chartCanvas.classList.add("mt-5")
+    const chart = new Chart(chartCanvas.getContext("2d"), {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    data: values,
+                    backgroundColor: ["#2959bf", "#d664d3", "#474090", "#ac9ee9", "#752eb0", "#6e1d6c", "#49234a", "#3f3243", "#9bb4ea", "#90c9f4", "#a39ed4", "#f39fd4", "#f31faf", "#f39aaa", "#f39a1f"]
+                }
+            ]
+        },
+        options: {
+            legend: { 
+                display: false,
+                position: "right",
+                labels: {
+                    fontSize: 20
+                }
+            }
+            /*title: {
+                display: true,
+                text: questions[columnNames[i]],
+                fontSize: 20
+            }*/
+        }
+    })
+
+    card.appendChild(cardBody);
+    cardBody.appendChild(questionTitle);
+    cardBody.appendChild(chartCanvas);
+    app.appendChild(card)
+}
+
+renderStaticChart("./11_1.json", "Woher erhältst du Informationen zur Fachschaft und ihren Events?")
 renderDynamicCharts(generalData, head)
