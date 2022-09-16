@@ -6,3 +6,7 @@ Thanks to [@sebastian-vogt-cs](https://github.com/sebastian-vogt-cs) for collect
 ## View results
 
 The final web-app can be viewed [here](https://students.fim.uni-passau.de/~harrerj/studierendenumfrage2022/index.html).
+
+## How it looks
+
+![Website](/screenshot_2022-09-16_15-07-55.png)
